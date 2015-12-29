@@ -1,0 +1,40 @@
+<h1>List</h1>
+<div class="panel">
+    <form method="get" action="/list">
+        <div class="form-group">
+            <div class="col-lg-6 col-lg-offset-2">
+                <input  type="text" class="form-control"
+                        name="query" id="search"
+                        {{#if query}}
+                        value ="{{query}}"
+                        {{/if}}
+                        placeholder = "Enter the subject name for search">
+            </div>
+            <div class="col-lg-2">
+                <input type="submit" class="btn btn-primary" value="Search">
+            </div>
+        </div>
+    </form>
+</div>
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Credit</th>
+            <th>Room</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data as |ember|}}
+        <tr>
+            <td>{{ember.targy}}</td>
+            <td>{{ember.kredit}}</td>
+            <td>{{ember.terem}}</td>
+            <td>
+                <a href="/modify/{{ember.id}}" class = "btn btn-primary pull-right">Modify</a>
+                <a href="/delete/{{ember.id}}" class = "btn btn-primary pull-right">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
